@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hooks test</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <h1>messages</h1>
+    <ul id="messages"></ul>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+    $(function(){
+      var $messages = $('#messages');
+      var socket = io();
+
+      socket.on('hook', function(msg){
+        var $message = $('<div>' + JSON.stringify(msg) + '</div>');
+        $messages.append($message);
+      });
+    });
+    </script>
+  </body>
+</html>
