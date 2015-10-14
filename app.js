@@ -18,6 +18,24 @@ app.get('/testsocketio', function(req, res){
   res.send('test message emitted');
 });
 
+app.get('/hookcallback', function(req, res){
+  var message = req;
+  io.emit('hook', message);
+  res.send('message emitted');
+});
+
+app.post('/hookcallback', function(req, res){
+  var message = req;
+  io.emit('hook', message);
+  res.send('message emitted');
+});
+
+app.put('/hookcallback', function(req, res){
+  var message = req;
+  io.emit('hook', message);
+  res.send('message emitted');
+});
+
 io.on('connection', function(socket){
   console.log('a user connected');
 });
