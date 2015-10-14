@@ -1,16 +1,12 @@
+
 var app = require('express')();
+var bodyParser = require('body-parser')
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 
-var bodyParser = require('body-parser')
-app.use( bodyParser.json() );
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get('/', function(req, res){
   res.sendfile('index.html');
