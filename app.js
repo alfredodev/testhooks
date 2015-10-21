@@ -27,7 +27,8 @@ app.post('/hookcallback', function(req, res){
   var message = {
     body: req.body,
     params: req.params,
-    query: req.query
+    query: req.query,
+    headers: req.headers
   };
   io.emit('hook', message);
   res.send('message emitted');
